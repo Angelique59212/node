@@ -4,13 +4,11 @@ const express = require('express');
 const expressApp = express();
 const server = http.createServer(expressApp);
 
+//Premier Middleware qui a comme charge de logger dans la console une request envoyé par le client
 expressApp.use((req, res) => {
-    if (req.url === "/")
-        res.send('Accès depuis la route /');
-    else if (req.url === "/test")
-        res.send('Accès depuis la route /test');
-    else
-        res.send("Une autre route a été spécifié");
+    res.json({message: "Hello World !"});
+    res.send('Hello World !');
+    res.redirect('https://www.google.fr');
 });
 
 expressApp.set('port', process.env.PORT || 3000);
